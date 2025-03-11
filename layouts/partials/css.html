@@ -1,0 +1,12 @@
+{{ with (templates.Defer (dict "key" "global")) }}
+  {{ with resources.Get "main.css" }}
+    {{ $opts := dict
+      "minify" true
+      "inlineImports" true
+    }}
+    {{ with . | css.TailwindCSS $opts }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{ end }}
+  {{ end }}
+{{ end }}
+

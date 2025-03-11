@@ -1,0 +1,70 @@
+{{ $contact := slice
+  (dict "icon" "telephone" "text" "905-515-2992" "link" "tel:905-515-2992")
+  (dict "icon" "email" "text" "info@adswashandseal.com" "link" "mailto:info@adswashandseal.com")
+}}
+
+{{ $services := slice
+  (dict "text" "Concrete Washing & Sealing")
+  (dict "text" "Asphalt Washing & Sealing")
+  (dict "text" "Interlock Install & Repair")
+  (dict "text" "Commercial Services")
+}}
+
+{{ $services := slice
+  (dict "text" "Greater Hamilton Area")
+  (dict "text" "Hamilton")
+  (dict "text" "Ancaster")
+  (dict "text" "Grimsby")
+  (dict "text" "Stoney Creek")
+}}
+
+<footer class="w-full bg-[#3075B5] flex h-auto p-16 justify-center items-start flex-col gap-4">
+
+  <div>
+    {{ partial "logos/logo-white.html" . }}
+  </div>
+  
+  <div class="w-full min-h-0.5 bg-white"></div>
+
+  <div class="flex items-start justify-start items-center gap-16 lg:gap-36 w-full flex-wrap">
+    <!-- CONTACT INFORMATION -->
+    <div class="flex flex-col text-white gap-4">
+      <h2 class="text-lg font-semibold">CONTACT INFORMATION</h2>
+      <ul>
+        {{ range $contact }}
+          <li class="flex gap-2 justify-start items-center font-thin text-base">
+            {{ $icon := printf "icons/%s.html" .icon }}
+            {{ partial $icon . }}
+            <a href="tel:{{.link}}">{{.text}}</a>
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+    <!-- CONTACT INFORMATION END -->
+
+    <!-- Our Services -->
+    <div class="flex flex-col text-white gap-4">
+      <h2 class="text-lg font-semibold">CONTACT INFORMATION</h2>
+      <ul>
+        {{ range $services }}
+          <li class="flex gap-2 justify-start items-center font-thin text-base">
+            {{.text}}
+          </li>
+        {{ end }}
+      </ul>
+    </div>
+    <!-- Our Services END -->
+
+    <!-- Our Service Areas -->
+    <div class="flex flex-col text-white gap-4">
+      <h2 class="text-lg font-semibold">CONTACT INFORMATION</h2>
+      <ul>
+        {{ range $services }}
+          <li class="flex gap-2 justify-start items-center font-thin text-base">
+            {{.text}}
+          </li>
+        {{ end }}
+      </ul>
+    <!-- Our Service Areas END -->
+  </div>
+</footer>

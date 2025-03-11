@@ -1,0 +1,43 @@
+baseURL = 'https://www.adswashandseal.com/'
+languageCode = 'en-us'
+title = 'A.D.S. Wasing & Sealing'
+[params]
+  HeroVideo = '/videos/hero.mp4'
+  HeroTitle = 'AWARD WINNING '
+  HeroSubtitle = 'Washing & Sealing Services'
+  HeroParagraph = 'A.D.S. offers applications for Concrete, Interlock, and Asphalt in the Greater Hamilton Area.'
+  HeroButtonText = 'Free Estimate'
+  HeroButtonLink = '/contact'
+  [services]
+    [services.concrete]
+      title = 'Concrete Wasing & Sealing'
+      description = 'Clean, protect, and enhance your exterior surfaces with our comprehensive pressure washing and sealing.'
+      image = '/images/concrete.jpg'
+      link = '/services/concrete'
+    [services.asphalt]
+      title = 'Asphalt & Repair'
+      description = 'Prevent costly damage, increase lifespan, enhances appearance an speed up ice and snow melt.'
+      image = '/images/asphalt.jpg'
+      link = '/services/asphalt'
+    [services.interlock]
+      title = 'Interlock Install & Restoration'
+      description = 'From creating a new design to fixing existing issues like weed overgrowth and brick shifting.'
+      image = '/images/interlock.jpg'
+      link = '/services/interlock'
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = 'assets/notwatching/hugo_stats\.json'
+    target = 'css'
+  [[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.js'
+    target = 'css'
+[module]
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    disableWatch = true
+    source = 'hugo_stats.json'
+    target = 'assets/notwatching/hugo_stats.json'

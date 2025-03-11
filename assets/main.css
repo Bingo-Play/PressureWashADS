@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@source "hugo_stats.json";
+
+[x-cloak] {
+  opacity: 0 !important;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.diagonal-right {
+  clip-path: polygon(100% 0, 0 0, 0 100%, 50% 100%);
+  backdrop-filter: blur(5px) opacity(1);
+  background-color: rgba(0, 0, 0, 0.25);
+}

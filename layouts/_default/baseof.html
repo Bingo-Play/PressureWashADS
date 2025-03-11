@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{ with resources.Get "/favicon.svg" }}
+  <link rel="icon" href="{{ .RelPermalink }}" type="image/svg+xml">
+  {{ end }}
+  <title>{{.Title}}</title>
+  {{ partialCached "partials/css.html" . }}
+</head>
+<body>
+{{ partial "nav.html" . }}
+{{ block "main" . }}
+{{ end }}
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+{{ with resources.Get "/js/htmx.js" }}
+  <script defer src="{{ .RelPermalink }}"></script>
+{{ end }}
+
+{{ partialCached "partials/footer.html" . }}
+</body>
+</html>
