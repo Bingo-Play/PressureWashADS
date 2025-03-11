@@ -13,10 +13,13 @@
 {{ partial "nav.html" . }}
 {{ block "main" . }}
 {{ end }}
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 {{ with resources.Get "/js/htmx.js" }}
   <script defer src="{{ .RelPermalink }}"></script>
 {{ end }}
+{{ with resources.Get "/js/store.js" }}
+  <script defer src="{{ .RelPermalink }}"></script>
+{{ end }}
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 {{ partialCached "partials/footer.html" . }}
 </body>
