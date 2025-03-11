@@ -18,8 +18,66 @@
   (dict "text" "Stoney Creek")
 }}
 
-<footer class="w-full bg-[#3075B5] flex h-auto p-16 justify-center items-start flex-col gap-4">
+{{ $whyChooseUs := slice
+  (dict "text" "Customer Service" "description" "At A.D.S. we believe in putting our customers first. Our team is committed to providing every step of the way. We pride ourselves on our clear communication, prompt responses, and personalized attention. Our perfect rating speaks volumes about our reliability and commitment to our customers, as we always stand behind our work and ensure any issues are resolved promptly.")
 
+  (dict "text" "Quality Equipment & Materials" "description" "Our industry-leading materials are vital to achieving long-lasting results. We select only the best materials and partner with trusted producers and distributors. Our high-grade sealers are superior to retail options, offering better performance, durability, and protection against water, chemicals, freeze/thaw damage, UV damage, salts and de-icing chemicals, staining, hot tire marks, and color fading. Trust us to provide the best quality materials for beautiful surfaces that last.We combine our top-of-the-line equipment with years of experience to take on any job, big or small, and deliver outstanding results. We guarantee that your surfaces will look as good as new and be ready to accept finishing materials.")
+
+  (dict "text" "Fully Licensed & Insured" "description" "A.D.S. is fully insured for your peace of mind. We take our responsibility seriously and are committed to protecting your property and our team members while on the job.")
+
+  (dict "text" "Satisfaction Guaranteed" "description" "We understand the importance of staying within budget without compromising on quality. Our team works with you to provide cost-effective solutions that deliver long-lasting results, saving you time and money in the long run. Choose A.D.S. for a superior surface protection and restoration experience.")
+}}
+
+
+<!-- Why Choose Us -->
+<section
+  x-data="{
+      selected: 0,
+      select(index) {
+        this.selected = index
+      },
+      isSelect(index) {
+        return this.selected === index
+      },
+    }"
+  class="flex flex-col gap-4 p-16">
+  <h2 class="text-4xl text-center uppercase">Why Choose Us?</h2>
+  <div class="flex min-h-[400px] flex-col md:flex-row">
+    <div class="flex flex-col justify-center items-start w-full md:w-[40%] pl-16 gap-4 bg-[#F1F1F1]">
+      {{ range $index, $element := $whyChooseUs }}
+        <div
+          @click="select({{$index}})"
+          class="flex flex-col gap-4 {{if eq $index 0}} underline-offset-8 underline {{end}}"
+          :class="{ 'text-[#53AB2D] underline-offset-8 underline': isSelect({{$index}}) }"
+        >
+
+          <h3 class="text-2xl select-none cursor-pointer">{{$element.text}}</h3>
+        </div>
+      {{ end }}
+
+      {{ partial "buttons/freeEstimate.html" dict "context" . "isBlue" false }}
+    </div>
+    <div class="flex flex-1 bg-[#0F63B0] px-[54px] py-[34px] ">
+      <div class="flex flex-col gap-4 text-white justify-center items-start">
+        {{ range $index, $element := $whyChooseUs }}
+          <div id="{{$index}}-paragraph"
+            class="flex flex-col gap-8 {{ if not (eq $index 0) }} hidden-content {{end}}"
+            :class="{
+              'hidden-content': !isSelect({{$index}}),
+              'slide-down': isSelect({{$index}})
+            }"
+          >
+            <h3 class="text-4xl select-none underline underline-offset-4 font-extralight">{{$element.text}}</h3>
+            <p class="text-white">{{$element.description}}</p>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Why Choose Us END -->
+
+<footer class="w-full bg-[#3075B5] flex h-auto p-16 justify-center items-start flex-col gap-4">
   <div>
     {{ partial "logos/logo-white.html" . }}
   </div>

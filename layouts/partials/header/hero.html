@@ -20,7 +20,8 @@
       {{ if .Site.Params.HeroParagraph }}
         <p class="text-white text-lg">{{ .Site.Params.HeroParagraph }}</p>
       {{ end }}
-      <a href="{{ .Site.Params.HeroButtonLink }}" class="bg-[#53AB2D] border-[#298103] border-[1px] uppercase text-white px-4 py-2 rounded-sm max-w-40 text-center">{{ .Site.Params.HeroButtonText }}</a>
+      
+      {{ partial "buttons/freeEstimate.html" dict "context" . "isBlue" false }}
     <!-- Overlay Text End -->
   </div>
 </header>
