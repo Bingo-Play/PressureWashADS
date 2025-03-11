@@ -1,38 +1,25 @@
-<div class="w-full h-[80dvh] flex flex-col justify-center items-center px-4">
-    <h2 class="text-4xl font-bold text-center text-black uppercase tracking-wider mb-8">Our Services</h2>
+{{ $services := slice
+  (dict "text" "concrete washing & sealing" "link" "/concrete-washing-sealing" "image" "images/services/concrete-wash.jpg" "description" "")
+  (dict "text" "asphalt repair & sealing" "link" "/asphalt-repair-sealing" "image" "images/services/asphalt-repair.jpg" "description" "")
+  (dict "text" "interlock install & restoration" "link" "/interlock-install-restoration" "image" "images/services/interlock.jpg" "description" "")
+}}
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full h-80">
-        <div class="relative group overflow-hidden hover:shadow-xl h-[450px] cursor-pointer">
-            <img class="w-96 h-96 object-cover" src="/images/hero-example.jpg" alt="example-1">
-            <div class="absolute bottom-0 backdrop-blur-sm bg-black/40 text-white p-6 w-full transition-all duration-300">
-                <h3 class="text-4xl font-semibold transition-transform duration-300 group-hover:-translate-y-2">Titleb kdfjsdklfjsdkf sfhsjdjfkhsdjkfhs</h3>
-                <p class="text-sm max-h-0 opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100 group-hover:mt-2">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum veniam recusandae eos eius, harum officiis quae voluptatibus hic modi voluptates, assumenda architecto sit amet aliquid, provident sint quaerat libero expedita.
-                </p>
-                <button class="mt-4 bg-[#177FDE] text-white font-bold py-2 px-4 rounded cursor-pointer">LEARN MORE</button>
-            </div>
-        </div>
-        
-        <div class="relative group overflow-hidden hover:shadow-xl h-[450px] cursor-pointer">
-            <img class="w-96 h-96 object-cover" src="/images/hero-example.jpg" alt="example-2">
-            <div class="absolute bottom-0 backdrop-blur-sm bg-black/40 text-white p-6 w-full transition-all duration-300 ">
-                <h3 class="text-4xl font-semibold transition-transform duration-300 group-hover:-translate-y-2">Title 2 fksdjklfjsdlk</h3>
-                <p class="text-sm max-h-0 opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100 group-hover:mt-2">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aspernatur accusantium temporibus voluptate dolor ratione vitae accusamus alias. Magnam perferendis, eligendi ipsam commodi, voluptate consequuntur quisquam quas incidunt saepe earum provident.
-                </p>
-                <button class="mt-4 bg-[#177FDE] text-white font-bold py-2 px-4 rounded cursor-pointer">LEARN MORE</button>
-            </div>
-        </div>
-        
-        <div class="relative group overflow-hidden hover:shadow-xl h-[450px] cursor-pointer">
-            <img class="w-96 h-96 object-cover" src="/images/hero-example.jpg" alt="example-3">
-            <div class="absolute bottom-0 backdrop-blur-sm bg-black/40 text-white p-6 w-full transition-all duration-300">
-                <h3 class="text-4xl font-semibold transition-transform duration-300 group-hover:-translate-y-2">Title</h3>
+<div class="w-full h-[70dvh] gap-16 flex flex-col justify-start items-center px-4">
+    <h2 class="text-6xl font-extralight  text-center text-center text-black uppercase tracking-wider">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full h-full">
+      {{ range $services }}
+        <div class="relative group overflow-hidden transition-all group-hover:shadow-xl h-full cursor-pointer">
+            {{ with resources.Get .image }}
+              <img width="300px" height="600px" class="w-full h-full object-cover" src="{{ .RelPermalink }}" alt="example-3">
+            {{ end }}
+            <div class="flex flex-col justify-between items-start absolute bottom-0 backdrop-blur-sm bg-black/40 text-white p-6 w-full transition-all duration-300 h-1/3 group-hover:h-1/2">
+              <h3 class="text-3xl font-extralight transition-transform duration-300 group-hover:-translate-y-2 uppercase">{{.text}}</h3>
                 <p class="text-sm max-h-0 opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100 group-hover:mt-2">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa facilis voluptatem in eligendi fugiat quas quia! Dolor porro consectetur, ratione vero, illo aliquid optio illum quis quam iste, officiis vitae!
                 </p>
-                <button class="mt-4 bg-[#177FDE] text-white font-bold py-2 px-4 rounded cursor-pointer">LEARN MORE</button>
+                <a href="{{.link}}" class="mt-4 bg-[#177FDE] text-white font-bold py-2 px-4 rounded cursor-pointer">LEARN MORE</a>
             </div>
         </div>
+      {{ end }}
     </div>
 </div>
