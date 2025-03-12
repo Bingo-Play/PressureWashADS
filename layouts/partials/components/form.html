@@ -1,0 +1,139 @@
+<div
+  x-cloak
+  x-show="open"
+  class="flex justify-center items-center h-screen w-full fixed top-0 left-0 backdrop-blur-sm bg-gray-100/55 z-50">
+  <!-- Modal Dialog -->
+  <div class="relative bg-white rounded-lg shadow-xl max-w-6xl w-full mx-4">
+    <!-- Close Button (X) -->
+    <button
+      @click="open = false"
+      class="absolute top-4 right-6 text-gray-500 hover:text-gray-800 cursor-pointer">
+      X
+    </button>
+    
+    <!-- Form Content -->
+    <div
+      @click.away="open = false"
+      @keydown.escape.window="open = false"
+      class="flex flex-col md:flex-row">
+      <!-- Left Side Info -->
+      <div class="p-8 md:w-1/3 bg-white">
+        {{ with resources.Get "logos/form-logo.png" }}
+          <img src="{{.RelPermalink}}" alt="A.D.S. Washing & Sealing">
+        {{ end }}
+        <h2 class="text-3xl text-gray-700 font-medium mb-4">Get a Free Estimate</h2>
+        
+        <p class="text-gray-600">
+          Need one of experts to reach out and help you with your next project? Please fill out the form and one of our specialist will reach out for your free estimate appointment.
+        </p>
+      </div>
+      
+      <!-- Right Side Form -->
+      <div class="p-8 md:w-2/3 bg-white">
+        <h1 class="text-4xl text-center font-bold mb-8">FREE ESTIMATE</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- First Name -->
+          <div>
+            <label class="block text-gray-700 mb-1">
+              First Name<span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              x-model="firstName"
+              class="w-full p-3 bg-gray-200 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Please Enter your First Name..."
+              :class="{'border-red-500': errors.firstName}"
+            >
+            <div x-show="errors.firstName" class="text-red-500 text-sm mt-1" x-text="errors.firstName"></div>
+          </div>
+          
+          <!-- Last Name -->
+          <div>
+            <label class="block text-gray-700 mb-1">
+              Last Name<span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="text" 
+              x-model="lastName"
+              class="w-full p-3 bg-gray-200 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Please Enter your Last Name..."
+              :class="{'border-red-500': errors.lastName}"
+            >
+            <div x-show="errors.lastName" class="text-red-500 text-sm mt-1" x-text="errors.lastName"></div>
+          </div>
+          
+          <!-- Email -->
+          <div>
+            <label class="block text-gray-700 mb-1">
+              Email<span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="email" 
+              x-model="email"
+              class="w-full p-3 bg-gray-200 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Please Enter your Email..."
+              :class="{'border-red-500': errors.email}"
+            >
+            <div x-show="errors.email" class="text-red-500 text-sm mt-1" x-text="errors.email"></div>
+          </div>
+          
+          <!-- Phone Number -->
+          <div>
+            <label class="block text-gray-700 mb-1">
+              Phone Number<span class="text-red-500">*</span>
+            </label>
+            <input 
+              type="tel" 
+              x-model="phone"
+              class="w-full p-3 bg-gray-200 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Please Enter your Phone..."
+              :class="{'border-red-500': errors.phone}"
+            >
+            <div x-show="errors.phone" class="text-red-500 text-sm mt-1" x-text="errors.phone"></div>
+          </div>
+        </div>
+        
+        <!-- Street Address (Full Width) -->
+        <div class="mt-6">
+          <label class="block text-gray-700 mb-1">
+            Street Address<span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="text" 
+            x-model="address"
+            class="w-full p-3 bg-gray-200 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="Please Enter your address..."
+            :class="{'border-red-500': errors.address}"
+          >
+          <div x-show="errors.address" class="text-red-500 text-sm mt-1" x-text="errors.address"></div>
+        </div>
+        
+        <!-- City -->
+        <div class="mt-6">
+          <label class="block text-gray-700 mb-1">
+            City<span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="text" 
+            x-model="city"
+            class="w-full p-3 bg-gray-200 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="Please Enter City..."
+            :class="{'border-red-500': errors.city}"
+          >
+          <div x-show="errors.city" class="text-red-500 text-sm mt-1" x-text="errors.city"></div>
+        </div>
+        
+        <!-- Submit Button -->
+        <div class="mt-8 flex justify-end">
+          <button 
+            @click="validateForm()"
+            class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded font-bold uppercase transition duration-200"
+          >
+            GET FREE ESTIMATE
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
