@@ -1,0 +1,6 @@
+{{ $text := .Get "text" }}
+<div class="flex gap-4 w-full justify-center items-center">
+  <h2 class="md:text-xl uppercase font-extralight">{{ $text }}</h2>
+  <div class="w-[10%] h-0.5 bg-gray-100"></div>
+  {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" false ) }}
+</div>
