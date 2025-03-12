@@ -1,23 +1,23 @@
 {{ $services := slice
-  (dict "text" "concrete washing & sealing" "link" "/concrete-washing-sealing" "image" "images/services/concrete-wash.jpg" "description" "")
-  (dict "text" "asphalt repair & sealing" "link" "/asphalt-repair-sealing" "image" "images/services/asphalt-repair.jpg" "description" "")
-  (dict "text" "interlock install & restoration" "link" "/interlock-install-restoration" "image" "images/services/interlock.jpg" "description" "")
+  (dict "text" "concrete washing & sealing" "link" "/concrete-washing-sealing" "image" "images/services/concrete-wash.jpg" "description" "Clean, proect and enhance your exterior surfaces with our comprehensive pressure washing and sealing.")
+  (dict "text" "asphalt repair & sealing" "link" "/asphalt-repair-sealing" "image" "images/services/asphalt-repair.jpg" "description" "Prevent costly damage, increase lifespan, enhance appearance and speed up ice and snow melt.")
+  (dict "text" "interlock install & restoration" "link" "/interlock-install-restoration" "image" "images/services/interlock.jpg" "description" "From creating a new design to fixing existing issues like weed overgrowth and brick shifting.")
 }}
 
-<div class="w-full h-[70dvh] gap-16 flex flex-col justify-start items-center px-4">
-    <h2 class="text-6xl font-extralight  text-center text-center text-black uppercase tracking-wider">Our Services</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full h-full">
+<div class="w-full h-auto md:h-[60dvh] lg:h-auto gap-16 flex flex-col justify-start items-center px-4">
+    <h2 class="text-4xl uppercase text-center">Our Services</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full h-full">
       {{ range $services }}
-        <div class="relative group overflow-hidden transition-all group-hover:shadow-xl h-full cursor-pointer">
+        <div class="relative group overflow-hidden transition-all group-hover:shadow-xl h-full">
             {{ with resources.Get .image }}
-              <img width="300px" height="600px" class="w-full h-full object-cover" src="{{ .RelPermalink }}" alt="example-3">
+              <img class="w-full h-full object-cover" src="{{ .RelPermalink }}" alt="Services">
             {{ end }}
-            <div class="flex flex-col justify-between items-start absolute bottom-0 backdrop-blur-sm bg-black/40 text-white p-6 w-full transition-all duration-300 h-1/3 group-hover:h-1/2">
+            <div class="flex flex-col justify-between items-start absolute bottom-0 backdrop-blur-sm bg-gray-100/55 text-white p-6 w-full transition-all duration-300 h-1/3 group-hover:h-1/2">
               <h3 class="text-3xl font-extralight transition-transform duration-300 group-hover:-translate-y-2 uppercase">{{.text}}</h3>
                 <p class="text-sm max-h-0 opacity-0 transition-all duration-300 group-hover:max-h-32 group-hover:opacity-100 group-hover:mt-2">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa facilis voluptatem in eligendi fugiat quas quia! Dolor porro consectetur, ratione vero, illo aliquid optio illum quis quam iste, officiis vitae!
+                  {{.description}}
                 </p>
-                <a href="{{.link}}" class="mt-4 bg-[#177FDE] text-white font-bold py-2 px-4 rounded cursor-pointer">LEARN MORE</a>
+                <a href="{{.link}}" class="mt-4 bg-[#177FDE] text-white font-extralight py-2 px-4 rounded cursor-pointer">LEARN MORE</a>
             </div>
         </div>
       {{ end }}

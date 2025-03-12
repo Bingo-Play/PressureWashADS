@@ -54,7 +54,7 @@
         </div>
       {{ end }}
 
-      {{ partial "buttons/freeEstimate.html" dict "context" . "isBlue" false }}
+      {{ partial "buttons/freeEstimate.html" (dict "context" . "IsBlue" false) }}
     </div>
     <div class="flex flex-1 bg-[#0F63B0] px-[54px] py-[34px] ">
       <div class="flex flex-col gap-4 text-white justify-center items-start">
@@ -75,8 +75,10 @@
   </div>
 </section>
 <!-- Why Choose Us END -->
-{{ partial "estimate/estimate.html" . }}
 
+<!-- Estimate -->
+{{ partial "estimate/estimate.html" . }}
+<!-- Estimate END -->
 
 <footer class="w-full bg-[#3075B5] flex h-auto p-16 justify-center items-start flex-col gap-4">
   <div>
@@ -88,7 +90,7 @@
   <div class="flex items-start justify-start items-center gap-16 lg:gap-36 w-full flex-wrap">
     <!-- CONTACT INFORMATION -->
     <div class="flex flex-col text-white gap-4">
-      <h2 class="text-lg font-semibold">CONTACT INFORMATION</h2>
+      <h2 class="text-lg font-extralight">CONTACT INFORMATION</h2>
       <ul>
         {{ range $contact }}
           <li class="flex gap-2 justify-start items-center font-thin text-base">
@@ -103,7 +105,7 @@
 
     <!-- Our Services -->
     <div class="flex flex-col text-white gap-4">
-      <h2 class="text-lg font-semibold">CONTACT INFORMATION</h2>
+      <h2 class="text-lg font-extralight">OUR SERVICES</h2>
       <ul>
         {{ range $services }}
           <li class="flex gap-2 justify-start items-center font-thin text-base">
@@ -116,7 +118,7 @@
 
     <!-- Our Service Areas -->
     <div class="flex flex-col text-white gap-4">
-      <h2 class="text-lg font-semibold">CONTACT INFORMATION</h2>
+      <h2 class="text-lg font-extralight">SERVICE AREA</h2>
       <ul>
         {{ range $services }}
           <li class="flex gap-2 justify-start items-center font-thin text-base">
