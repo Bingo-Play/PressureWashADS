@@ -2,7 +2,7 @@
   <div class="h-[90dvh] w-full relative overflow-hidden">
     <div class="diagonal-right h-full w-[90%] md:w-[70%] h-full absolute top-0 left-0 z-10"></div>
     {{ if .Site.Params.HeroVideo }}
-      <video class="min-h-full min-w-full object-cover" autoplay loop muted playsinline>
+      <video class="min-h-full min-w-full object-cover" loop muted playsinline>
         {{ with resources.Get .Site.Params.HeroVideo }}
           <source src="{{ .RelPermalink }}" type="video/mp4" />
         {{ end }}
@@ -21,7 +21,7 @@
         <p class="text-white text-lg">{{ .Site.Params.HeroParagraph }}</p>
       {{ end }}
       
-      {{ partial "buttons/freeEstimate.html" dict "context" . "isBlue" false }}
+      {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" false ) }}
     <!-- Overlay Text End -->
   </div>
 </header>

@@ -1,0 +1,9 @@
+<section class="w-full">
+  <div class="flex w-1/2 justify-center items-center mx-auto" aria-valuetext="Our Clients">
+    {{ range .Clients }}
+      {{ with resources.Get .logo }}
+          <img class="flex-1 h-24 object-contain" src="{{ .RelPermalink }}" alt="ASHDKAJ">
+      {{ end }}
+    {{ end }}
+  </div>
+</section>
