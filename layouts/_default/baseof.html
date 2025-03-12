@@ -11,6 +11,7 @@
 </head>
 <body>
 {{ partial "nav.html" . }}
+{{ partial "header/hero.html" . }}
 {{ block "main" . }}
 {{ end }}
 {{ with resources.Get "/js/htmx.js" }}

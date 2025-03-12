@@ -1,10 +1,10 @@
 {{ $services := slice
-  (dict "text" "concrete washing & sealing" "link" "/concrete-washing-sealing" "image" "images/services/concrete-wash.jpg" "description" "Clean, proect and enhance your exterior surfaces with our comprehensive pressure washing and sealing.")
-  (dict "text" "asphalt repair & sealing" "link" "/asphalt-repair-sealing" "image" "images/services/asphalt-repair.jpg" "description" "Prevent costly damage, increase lifespan, enhance appearance and speed up ice and snow melt.")
-  (dict "text" "interlock install & restoration" "link" "/interlock-install-restoration" "image" "images/services/interlock.jpg" "description" "From creating a new design to fixing existing issues like weed overgrowth and brick shifting.")
+  (dict "text" "concrete washing & sealing" "link" "/services/concrete-washing-sealing" "image" "images/services/concrete-wash.jpg" "description" "Clean, proect and enhance your exterior surfaces with our comprehensive pressure washing and sealing.")
+  (dict "text" "asphalt repair & sealing" "link" "/services/asphalt-repair-sealing" "image" "images/services/asphalt-repair.jpg" "description" "Prevent costly damage, increase lifespan, enhance appearance and speed up ice and snow melt.")
+  (dict "text" "interlock install & restoration" "link" "/services/interlock-install-restoration" "image" "images/services/interlock.jpg" "description" "From creating a new design to fixing existing issues like weed overgrowth and brick shifting.")
 }}
 
-<div class="w-full h-auto md:h-[60dvh] lg:h-auto gap-16 flex flex-col justify-start items-center px-4">
+<div class="w-full h-[70dvh] gap-16 flex flex-col justify-start items-center px-4">
     <h2 class="text-4xl uppercase text-center">Our Services</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full h-full">
       {{ range $services }}

@@ -2,6 +2,7 @@ baseURL = 'https://www.adswashandseal.com/'
 languageCode = 'en-us'
 title = 'A.D.S. Wasing & Sealing'
 [params]
+  ShowVideo = true
   HeroVideo = '/videos/hero.mp4'
   HeroTitle = 'AWARD WINNING '
   HeroSubtitle = 'Washing & Sealing Services'

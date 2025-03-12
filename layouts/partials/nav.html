@@ -1,9 +1,11 @@
 <!-- Vars -->
 {{ $services := slice
-  (dict "text" "concrete washing & sealing" "link" "/concrete-washing-sealing" "image" "images/nav/services/concrete-washing-sealing.jpg")
-  (dict "text" "asphalt repair & sealing" "link" "/asphalt-repair-sealing" "image" "images/nav/services/asphalt-repair-sealing.jpg")
-  (dict "text" "interlock install & restoration" "link" "/interlock-install-restoration" "image" "images/nav/services/interlock-install.jpg")
+  (dict "text" "concrete washing & sealing" "link" "/services/concrete-washing-sealing" "image" "images/nav/services/concrete-washing-sealing.jpg")
+  (dict "text" "asphalt repair & sealing" "link" "/services/asphalt-repair-sealing" "image" "images/nav/services/asphalt-repair-sealing.jpg")
+  (dict "text" "interlock install & restoration" "link" "/services/interlock-install-restoration" "image" "images/nav/services/interlock-install.jpg")
 }}
+
+{{ $selectedService := .Params.SelectedService | default "" }}
 
 <!-- Main container -->
 <div
@@ -14,10 +16,10 @@
     <div class="relative bg-[#53AB2D] rounded-md shadow-lg border-2 border-[#6BD43D] h-24 flex justify-between items-center p-4">
       <!-- Logo section on left -->
       <div class="flex items-center">
-          <div class="flex">
+          <a href="/" class="flex">
               <!-- Logo shapes (simplified) -->
               {{ partial "logos/logo.html" . }}
-          </div>
+          </a>
       </div>
       
       <!-- Navigation section on right -->
@@ -44,8 +46,8 @@
           <div class="w-full h-[2px] bg-[#53AB2D] overflow-auto flex gap-4"></div>
           <div class="flex gap-4 items-center py-4 overflow-auto h-full">
             {{ range $services }}
-            <div class="group relative min-w-[300px] flex flex-col justify-start items-center gap-4 h-full cursor-pointer overflow-hidden">
-                <div class="transition-discrete w-[300px] h-[200px] rounded-md shadow-lg overflow-hidden group-hover:border-4 group-hover:border-[#53AB2D]">
+            <a href="{{ .link }}" class="group relative min-w-[300px] flex flex-col justify-start items-center gap-4 h-full cursor-pointer overflow-hidden">
+              <div class="transition-discrete w-[300px] h-[200px] rounded-md shadow-lg overflow-hidden group-hover:border-4 group-hover:border-[#53AB2D] {{ if eq $selectedService .text }}border-4 border-[#53AB2D]{{end}}">
                   {{ with resources.Get .image }}
                     <img
                       class="bg-cover duration-300 group-hover:scale-140 w-full h-full"
@@ -56,10 +58,10 @@
                   {{ end }}
                 </div>
                 <div
-                  class="group-hover:opacity-100 transition group-hover:bg-[#53AB2D] text-center font-bold w-56 absolute bottom-5 bg-[#1263B0] opacity-70 uppercase p-4 rounded-md text-white">
+                  class="group-hover:opacity-100 transition group-hover:bg-[#53AB2D] text-center font-bold w-56 absolute bottom-5 bg-[#1263B0] opacity-70 uppercase p-4 rounded-md text-white {{ if eq $selectedService .text }}!bg-[#53AB2D] opacity-100{{end}}">
                   <h3>{{ .text }}</h3>
                 </div>
-              </div>
+              </a>
             {{ end }}
           </div>
         </div>
