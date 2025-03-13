@@ -1,0 +1,31 @@
+<!-- layouts/partials/asphalt-process.html -->
+<div class="container mx-auto px-4 py-12">
+    <h2 class="text-4xl text-center mb-12">OUR PROCESS</h2>
+    
+    <div class="grid grid-cols-4 gap-30">
+      {{ $processSteps := slice
+          (dict "title" "STEP 1" "description" "Clear the asphalt of any debris, dirt, or dust using a blower or broom to create a clean surface for the sealer to stick to." "image" "images/process/clean.jpg")
+          (dict "title" "STEP 2" "description" "Use specialized filler material to fill small cracks in the asphalt surface to prevent further damage and maintain the surface's integrity." "image" "images/process/fill.jpg")
+          (dict "title" "STEP 3" "description" "Cut out any larger cracks or holes in the asphalt surface, fill with new asphalt, and compact it to create a smooth, level surface." "image" "images/process/patch.jpg")
+          (dict "title" "STEP 4" "description" "Use specialized equipment to apply two coats of sealer to the surface after cleaning and any necessary repairs are completed." "image" "images/process/sealer.jpg")
+          (dict "title" "STEP 1" "description" "Clear the asphalt of any debris, dirt, or dust using a blower or broom to create a clean surface for the sealer to stick to." "image" "images/process/clean.jpg")
+          (dict "title" "STEP 2" "description" "Use specialized filler material to fill small cracks in the asphalt surface to prevent further damage and maintain the surface's integrity." "image" "images/process/fill.jpg")
+          (dict "title" "STEP 3" "description" "Cut out any larger cracks or holes in the asphalt surface, fill with new asphalt, and compact it to create a smooth, level surface." "image" "images/process/patch.jpg")
+          (dict "title" "STEP 4" "description" "Use specialized equipment to apply two coats of sealer to the surface after cleaning and any necessary repairs are completed." "image" "images/process/sealer.jpg")
+      }}
+      
+      {{ range $processSteps }}
+        <div class="relative flex flex-col items-center w-96">
+            <div class="overflow-hidden rounded-lg h-72 w-full flex ">
+                <img src="/images/hero-example.jpg" alt="example" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute bottom-[-75px] bg-green-600 text-white p-5 rounded-xl shadow-lg text-center w-80 h-[150px] mt-8 drop-shadow-lg">
+                <h3 class="font-bold text-lg mb-2 uppercase tracking-wide">{{ .title }}</h3>
+                <p class="text-sm leading-snug">{{ .description }}</p>
+            </div>
+        </div>
+        {{ end }}
+        </div>
+    </div>
+  </div>
+
