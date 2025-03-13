@@ -41,8 +41,8 @@
     }"
   class="flex flex-col gap-4 p-16">
   <h2 class="text-4xl text-center uppercase">Why Choose Us?</h2>
-  <div class="flex min-h-[400px] flex-col md:flex-row">
-    <div class="flex flex-col justify-center items-start w-full md:w-[40%] pl-16 gap-4 bg-[#F1F1F1]">
+  <div class="flex min-h-[400px] flex-col md:flex-row ">
+    <div class="flex flex-col justify-center items-center md:items-start w-full md:w-[40%] p-4 md:pl-16 gap-4 bg-[#F1F1F1]">
       {{ range $index, $element := $whyChooseUs }}
         <div
           @click="select({{$index}})"

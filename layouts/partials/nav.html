@@ -10,7 +10,7 @@
 <!-- Main container -->
 <div
   x-cloak
-  x-data="{ isOpen: false }"
+  x-data="{ isOpen: false, isMobileMenuOpen: false }"
   class="w-full p-4 fixed top-0 z-50">
     <!-- Green banner with drop shadow -->
     <div class="relative bg-[#53AB2D] rounded-md shadow-lg border-2 border-[#6BD43D] h-24 flex justify-between items-center p-4">
@@ -23,12 +23,53 @@
       </div>
       
       <!-- Navigation section on right -->
-      <div class="uppercase flex gap-8 text-2xl cursor-pointer select-none">
-          <!-- Navigation links -->
-          <a @click="isOpen = !isOpen" class="text-white">Services</a>
-          <a href="/our-work" class="text-white">Our Work</a>
-          <a href="/contact" class="text-white">Contact</a>
+      <div class="uppercase hidden md:flex gap-8 text-2xl cursor-pointer select-none">
+        <!-- Navigation links -->
+        <a @click="isOpen = !isOpen" class="text-white">Services</a>
+        <a href="/our-work" class="text-white">Our Work</a>
+        <a href="/contact" class="text-white">Contact</a>
       </div>
+
+      <div
+        class="w-full h-full fixed top-0 right-0 flex flex-col gap-4 p-4 bg-gray-50/80 shadow-lg rounded-md z-50"
+        x-show="isMobileMenuOpen"
+      >
+        <div 
+          @click.away="isMobileMenuOpen = false"
+          x-show="isMobileMenuOpen"
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 transform -translate-x-4"
+          x-transition:enter-end="opacity-100 transform translate-x-0"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100 transform translate-x-0"
+          x-transition:leave-end="opacity-0 transform -translate-x-4"
+
+          class="flex flex-col gap-4 w-[70%] h-full ml-auto bg-[#1263B0] p-4 rounded-md shadow-lg"
+        >
+
+          <a href="/services/concrete-washing-sealing" class="text-white text-xl shadow-xl p-4 rounded">Concrete Washing & Sealing</a>
+          <a href="/services/asphalt-repair-sealing" class="text-white text-xl shadow-xl p-4 rounded">Asphalt Repair & Sealing</a>
+          <a href="/services/interlock-install-restoration" class="text-white text-xl shadow-xl p-4 rounded">Interlock Install & Restoration</a>
+          <a href="/our-work" class="text-white text-xl shadow-xl p-4 rounded">Our Work</a>
+          <a href="/contact" class="text-white text-xl shadow-xl p-4 rounded">Contact</a>
+          {{ partial "buttons/freeEstimate.html" (dict "context" . "IsBlue" true) }}
+        </div>
+      </div>
+      
+      <!-- Mobile menu -->
+      <div class="md:hidden flex items-center">
+        <!-- Hamburger icon -->
+        <button @click="isMobileMenuOpen = !isMobileMenuOpen" class="text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="hidden md:block">
+        {{ partial "buttons/freeEstimate.html" (dict "context" . "IsBlue" true) }}
+      </div>
+      
       <div
          x-show="isOpen"
          @click.away="isOpen = false"
@@ -51,7 +92,7 @@
                     <img
                       class="bg-cover duration-300 group-hover:scale-140 w-full h-full"
                       src="{{ .RelPermalink }}"
-                      width="200px"
+      width="200px"
                       height="250px"
                     />
                   {{ end }}
@@ -64,7 +105,6 @@
             {{ end }}
           </div>
         </div>
-        {{ partial "buttons/freeEstimate.html" (dict "context" . "IsBlue" true) }}
     </div>
 </div>
 
