@@ -8,8 +8,8 @@
 {{ $heroOff := .Params.HeroOff | default false }}
 
 {{ if not $heroOff }}
-<header>
-  <div class="w-full relative overflow-hidden">
+<header class="h-screen md:h-[90vh] relative">
+  <div class="w-full relative overflow-hidden h-full">
     <div class="diagonal-right h-full w-[90%] md:w-[70%] h-full absolute top-0 left-0 z-10"></div>
     {{ if $showVideo }}
       <video class="min-h-full min-w-full object-cover" autoplay loop muted playsinline>
