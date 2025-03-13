@@ -20,7 +20,7 @@
   }"
 
   class="w-full flex flex-col justify-start items-center gap-4 px-20 overflow-hidden">
-  <h2 class="text-4xl text-center">{{$title}}</h2>
+  <h2 class="text-4xl text-center uppercase">{{$title}}</h2>
   <div
     x-ref="carouselContainer"
     class="flex w-full h-96 gap-4 transition-transform duration-500 ease-in-out"
@@ -33,7 +33,7 @@
           <source src="{{ .RelPermalink }}">
           Your browser does not support the video tag.
         </video>
-      {{ else }}
+          {{ else if eq .ResourceType "image" }}
           <img src="{{ .RelPermalink }}" alt="Gallery Image" class="min-w-96 h-full object-cover rounded-box">
       {{ end }}
     {{ end }}

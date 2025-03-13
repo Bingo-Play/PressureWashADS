@@ -1,0 +1,24 @@
+{{ $services := .Page.Params.Services }}
+
+<div class="w-full">
+  {{ range $index, $service := $services }}
+    {{ $isEven := eq (mod $index 2) 0 }}
+    
+    <div class="w-full h-[70dvh] relative mb-12">
+      <div class="flex w-full h-full relative">
+        {{ with resources.Get $service.image }}
+          <img class="w-full h-full object-cover" src="{{ .RelPermalink }}" alt="{{ $service.text }}">
+        {{ end }}
+        
+        <div class="flex flex-col absolute top-1/2 -translate-y-1/2 {{ if not $isEven }}left-[5%]{{ else }}right-[5%]{{ end }} bg-gray-400/60 backdrop-blur-sm text-white px-8 py-8 w-[35%] min-h-[60%] rounded-lg shadow-lg border-[1px] border-solid border-white gap-4">
+          <h3 class="text-6xl font-bold capitalize">{{ $service.text }}</h3>
+          <p class="mt-4 text-xl text-white font-extralight">
+              {{ $service.description }}
+          </p>
+          <a href="{{ $service.link }}" target="_blank" class="mt-auto mr-auto inline-block bg-[#177FDE] text-white font-medium py-2 px-4 rounded transition">PLAY VIDEO</a>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+</div>
+
