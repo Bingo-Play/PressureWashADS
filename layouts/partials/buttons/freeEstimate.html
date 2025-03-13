@@ -1,42 +1,15 @@
-<div x-data="{ 
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        address: '',
-        city: '',
-        errors: {},
-        open: false,
-        validateForm() {
-          // https://docs.google.com/forms/d/e/1FAIpQLSdILumHMko-lSeuVBsie0QfrIgG3bPdL_RSTtOuPIvePRQq_Q/viewform?usp=pp_url&entry.823424043=NAME&entry.1730545173=PHONE&entry.1955899792=EMAIL&entry.518836365=ADRESS&entry.1620806425=CITY
-          this.errors = {};
-          
-          if (!this.firstName) this.errors.firstName = 'First name is required';
-          if (!this.lastName) this.errors.lastName = 'Last name is required';
-          if (!this.email) this.errors.email = 'Email is required';
-          else if (!/^\S+@\S+\.\S+$/.test(this.email)) this.errors.email = 'Email is invalid';
-          if (!this.phone) this.errors.phone = 'Phone number is required';
-          if (!this.address) this.errors.address = 'Street address is required';
-          if (!this.city) this.errors.city = 'City is required';
-          
-          if (Object.keys(this.errors).length === 0) {
-            alert('Form submitted successfully!');
-            // Here you would typically submit the form to your backend
-          }
-        }
-      }"
->
-{{ if eq .IsBlue true}}
-  <button
-    @click="open = true"
-    class="px-6 py-2 bg-white text-[#0F63B0] rounded font-bold border-3 border-[#105695] uppercase cursor-pointer"
-  >FREE ESTIMATE</button>
-{{ else }}
-  <button
-    @click="open = true"
-    class="bg-[#53AB2D] border-[#298103] border-[1px] uppercase text-white px-4 py-2 rounded-sm max-w-40 text-center cursor-pointer"
+<div x-data="contactForm">
+  {{ if eq .IsBlue true}}
+    <button
+      @click="open = true"
+      class="px-6 py-2 bg-white text-[#0F63B0] rounded font-bold border-3 border-[#105695] uppercase cursor-pointer"
     >FREE ESTIMATE</button>
-{{ end }}
+  {{ else }}
+    <button
+      @click="open = true"
+      class="bg-[#53AB2D] border-[#298103] border-[1px] uppercase text-white px-4 py-2 rounded-sm max-w-40 text-center cursor-pointer"
+      >FREE ESTIMATE</button>
+  {{ end }}
 
-{{ partial "components/form.html" . }}
+  {{ partial "components/form.html" . }}
 </div>

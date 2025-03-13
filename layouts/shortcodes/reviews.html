@@ -1,0 +1,65 @@
+{{ $reviews := .Page.Params.Reviews }}
+
+<section class="flex flex-col gap-4 w-full p-4">
+  <h2 class="text-4xl uppercase text-center font-extralight">What Customers Have To Say</h2>
+  <!-- Review Card -->
+  <div class="flex flex-col gap-8 p-4 bg-gray-100 relative overflow-x-auto">
+    {{ with resources.Get "images/services/asphalt-repair.jpg" }}
+      <img class="w-full h-full absolute top-0 left-0 right-0 bottom-0 z-0 object-cover select-none" src="{{ .RelPermalink }}" alt="Review Image Background" />
+    {{ end }}
+    <div class="flex gap-8 z-10 justify-center items-center">
+      {{ range $reviews }}
+        <div class="bg-white rounded-lg shadow-lg p-6 max-w-md w-full z-10">
+          <!-- Header with Avatar and Name -->
+          <div class="flex justify-between items-center mb-4">
+            <!-- Avatar and Name/Date -->
+            <div class="flex items-center">
+              <!-- Circle Avatar with Letter -->
+              <div class="w-12 h-12 rounded-full bg-red-600 text-white flex justify-center items-center font-bold text-2xl mr-4">
+                {{ substr .name 0 1 }}
+              </div>
+              
+              <!-- Name and Date -->
+              <div>
+                <h3 class="font-medium text-gray-900">{{.name}}</h3>
+              </div>
+            </div>
+            
+            <!-- Gray Circle (could be a menu button) -->
+            <div class="w-8 h-8 rounded-full bg-gray-300"></div>
+          </div>
+          
+          <!-- Star Rating -->
+          <div class="flex mb-4">
+            <svg class="w-6 h-6 text-yellow-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <svg class="w-6 h-6 text-yellow-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <svg class="w-6 h-6 text-yellow-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <svg class="w-6 h-6 text-yellow-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+            <svg class="w-6 h-6 text-yellow-400 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+            </svg>
+          </div>
+          
+          <!-- Review Text -->
+          <p class="text-gray-800 text-sm line-clamp-4">
+            {{.review}}
+          </p>
+
+          <a href="{{.link}}" target="_blank" class="text-blue-500 text-sm font-medium mt-4">Read more</a>
+        </div>
+      {{ end }}
+    </div>
+    <a href="https://www.google.com/maps/place/A.D.S.+Wash+and+Seal/@43.2001109,-79.7919072,17z/data=!4m8!3m7!1s0x882c98f7bed5d0e5:0x27a0075a6b681704!8m2!3d43.200107!4d-79.7893323!9m1!1b1!16s%2Fg%2F11cmd1bl50?entry=ttu&g_ep=EgoyMDI1MDMwOC4wIKXMDSoASAFQAw%3D%3D" class="ml-auto flex justify-center items-center gap-4 bg-black/40 text-4xl text-white font-medium p-4 z-10" target="_blank">
+      More Reviews
+      {{ partial "icons/arrow.html" . }}
+    </a>
+  </div>
+</section>

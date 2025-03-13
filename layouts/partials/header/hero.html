@@ -5,7 +5,9 @@
 {{ $subtitle := .Params.HeroSubtitle | default .Site.Params.HeroSubtitle }}
 {{ $paragraph := .Params.HeroParagraph | default .Site.Params.HeroParagraph }}
 {{ $showVideo := .Params.ShowVideo | default .Site.Params.ShowVideo }}
+{{ $heroOff := .Params.HeroOff | default false }}
 
+{{ if not $heroOff }}
 <header>
   <div class="w-full relative overflow-hidden">
     <div class="diagonal-right h-full w-[90%] md:w-[70%] h-full absolute top-0 left-0 z-10"></div>
@@ -35,4 +37,6 @@
     <!-- Overlay Text End -->
   </div>
 </header>
-
+{{ else }}
+<header class="mt-[10dvh]"></header>
+{{ end }}

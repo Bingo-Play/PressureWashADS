@@ -1,4 +1,9 @@
 {{ $services := .Page.Params.Services }}
+{{ $showSecondaryServices := .Get "showSecondaryServices" | default false }}
+{{ $secondaryServices := .Page.Params.SecondaryServices }}
+{{ if $showSecondaryServices }}
+  {{ $services = $secondaryServices }}
+{{ end }}
 
 <div class="w-full">
   {{ range $index, $service := $services }}
