@@ -3,8 +3,8 @@ name: Deploy Hugo to Nginx
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - main  # Change to your default branch if different
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
   build-and-deploy:
@@ -13,28 +13,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: recursive  # Get Hugo themes (true OR recursive)
           fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: 'latest'
-          extended: true
+          extended: true  # If you need SCSS processing
 
       - name: Build
         run: hugo --minify
 
-      - name: Prepare target directory
+      - name: Backup existing deployment
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -42,27 +33,15 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
           script: |
-            # Create backup directory
-            sudo mkdir -p /var/www/backups
-            
-            # Create a timestamp for backup
             timestamp=$(date +%Y%m%d_%H%M%S)
-            
-            # Backup existing content if it exists
+            mkdir -p /var/www/backups
             if [ -d "/var/www/html" ]; then
-              sudo cp -r /var/www/html /var/www/backups/backup_$timestamp
+              cp -r /var/www/html /var/www/backups/backup_$timestamp
               # Keep only last 5 backups
-              sudo ls -dt /var/www/backups/backup_* | tail -n +6 | xargs sudo rm -rf
+              ls -dt /var/www/backups/backup_* | tail -n +6 | xargs rm -rf
             fi
-            
-            # Ensure target directory exists with proper permissions
-            sudo mkdir -p /var/www/html
-            sudo rm -rf /var/www/html/*  # Clear existing content
-            sudo chown -R $USER:$USER /var/www/html  # Give SSH user temporary ownership
-            
-            echo "Target directory prepared with correct permissions"
 
-      - name: Deploy to server
+      - name: Deploy to temp directory
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -70,10 +49,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
           source: "public/*"
-          target: "/var/www/html"
-          strip_components: 1
+          target: "~/hugo-deploy-temp"
+        strip_components: 1
 
-      - name: Set final permissions and reload Nginx
+      - name: Complete deployment with sudo script
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SERVER_HOST }}
@@ -81,12 +60,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT || 22 }}
           script: |
-            # Set proper ownership and permissions
-            sudo chown -R www-data:www-data /var/www/html
-            sudo find /var/www/html -type d -exec chmod 755 {} \;
-            sudo find /var/www/html -type f -exec chmod 644 {} \;
-            
-            # Validate and reload Nginx
-            sudo nginx -t && sudo systemctl reload nginx
-            
-            echo "Deployment completed successfully"
+            # Run our sudo-enabled deployment script
+            sudo /usr/local/bin/hugo-deploy
