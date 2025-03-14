@@ -50,7 +50,7 @@ jobs:
           port: ${{ secrets.SSH_PORT || 22 }}
           source: "public/*"
           target: "~/hugo-deploy-temp"
-        strip_components: 1
+          strip_components: 1
 
       - name: Complete deployment with sudo script
         uses: appleboy/ssh-action@v1.0.0
