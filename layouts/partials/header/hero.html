@@ -10,7 +10,7 @@
 {{ if not $heroOff }}
 <header class="h-screen md:h-[90vh] relative">
   <div class="w-full relative overflow-hidden h-full">
-    <div class="diagonal-right h-full w-[90%] md:w-[70%] h-full absolute top-0 left-0 z-10"></div>
+    <div class="diagonal-right h-full w-full md:w-[70%] h-full absolute top-0 left-0 z-10"></div>
     {{ if $showVideo }}
       <video class="min-h-full min-w-full object-cover" autoplay loop muted playsinline>
         {{ with resources.Get $video }}
@@ -24,13 +24,13 @@
     {{ end }}
 
     <!-- Overlay Text -->
-    <div class="flex flex-col gap-8 absolute w-1/2 lg:w-1/3 top-[20dvh] left-10 lg:left-[127px] z-20 text-start">
+    <div class="flex flex-col gap-4 md:gap-8 absolute w-[80%] md:w-1/2 lg:w-1/3 top-[20dvh] left-5 lg:left-[127px] z-20 text-start">
       <h1 class="text-white font-thin text-4xl md:text-6xl font-bold">{{ $title }}</h1>
       {{ if $showVideo }}
         <p class="text-white text-6xl">{{ $subtitle }}</p>
       {{ end }}
       {{ if $subtitle }}
-        <p class="text-white text-2xl font-extralight">{{ $paragraph }}</p>
+        <p class="text-white w-[85%] text-2xl font-extralight">{{ $paragraph }}</p>
       {{ end }}
       
       {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" false "Site" .Site ) }}
