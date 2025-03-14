@@ -1,4 +1,4 @@
-const formPost = (name, phone, email, address, city) => `https://docs.google.com/forms/d/e/1FAIpQLSdILumHMko-lSeuVBsie0QfrIgG3bPdL_RSTtOuPIvePRQq_Q/formResponse?&submit=Submit?usp=pp_url&entry.823424043=${name}&entry.1730545173=${phone}&entry.1955899792=${email}&entry.518836365=${address}&entry.1620806425=${city}`
+const formPost = (name, phone, email, address, city, surface, description) => `https://docs.google.com/forms/d/e/1FAIpQLSdILumHMko-lSeuVBsie0QfrIgG3bPdL_RSTtOuPIvePRQq_Q/formResponse?&submit=Submit?usp=pp_url&entry.823424043=${name}&entry.1730545173=${phone}&entry.1955899792=${email}&entry.518836365=${address}&entry.1620806425=${city}&entry.779264635=${surface}&entry.1140661047=${description}`
 
 const getRequest = async (url) => {
   try {
@@ -20,6 +20,9 @@ document.addEventListener('alpine:init', () => {
     phone: '',
     address: '',
     city: '',
+    surface: '',
+    description: '',
+    maxChars: 200,
     errors: {},
     open: false,
     validateForm() {
@@ -32,9 +35,11 @@ document.addEventListener('alpine:init', () => {
       if (!this.phone) this.errors.phone = 'Phone number is required';
       if (!this.address) this.errors.address = 'Street address is required';
       if (!this.city) this.errors.city = 'City is required';
+      if (!this.surface) this.errors.surface = 'Surface is required';
+      if (this.description.length > this.maxChars) this.errors.description = 'Description is too long';
 
       if (Object.keys(this.errors).length === 0) {
-        const URL = formPost(this.firstName + ' ' + this.lastName, this.phone, this.email, this.address, this.city);
+        const URL = formPost(this.firstName + ' ' + this.lastName, this.phone, this.email, this.address, this.city, this.surface, this.description);
         getRequest(URL)
           .then(({ error }) => {
             if (error) {
@@ -48,9 +53,16 @@ document.addEventListener('alpine:init', () => {
               this.phone = '';
               this.address = '';
               this.city = '';
+              this.surface = '';
+              this.description = '';
             }
+
+            this.open = false;
           });
       }
+    },
+    get remainingChars() {
+      return `( Only ${this.maxChars - this.description.length} characters left )`;
     }
   }));
 })

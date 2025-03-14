@@ -9,7 +9,7 @@
   (dict "text" "Interlock Install & Repair")
 }}
 
-{{ $services := slice
+{{ $area := slice
   (dict "text" "Greater Hamilton Area")
   (dict "text" "Hamilton")
   (dict "text" "Ancaster")
@@ -54,7 +54,7 @@
         </div>
       {{ end }}
 
-      {{ partial "buttons/freeEstimate.html" (dict "context" . "IsBlue" false) }}
+      {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" false "Site" .Site ) }}
     </div>
     <div class="flex flex-1 bg-[#0F63B0] px-[54px] py-[34px] ">
       <div class="flex flex-col gap-4 text-white justify-center items-start">
@@ -120,7 +120,7 @@
     <div class="flex flex-col text-white gap-4">
       <h2 class="text-lg font-extralight">SERVICE AREA</h2>
       <ul>
-        {{ range $services }}
+        {{ range $area }}
           <li class="flex gap-2 justify-start items-center font-thin text-base">
             {{.text}}
           </li>

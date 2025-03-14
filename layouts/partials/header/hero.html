@@ -33,7 +33,7 @@
         <p class="text-white text-2xl font-extralight">{{ $paragraph }}</p>
       {{ end }}
       
-      {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" false ) }}
+      {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" false "Site" .Site ) }}
     <!-- Overlay Text End -->
   </div>
 </header>

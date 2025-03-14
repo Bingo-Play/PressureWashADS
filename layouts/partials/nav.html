@@ -52,7 +52,7 @@
           <a href="/services/interlock-install-restoration" class="text-white text-xl shadow-xl p-4 rounded">Interlock Install & Restoration</a>
           <a href="/our-work" class="text-white text-xl shadow-xl p-4 rounded">Our Work</a>
           <a href="/contact" class="text-white text-xl shadow-xl p-4 rounded">Contact</a>
-          {{ partial "buttons/freeEstimate.html" (dict "context" . "IsBlue" true) }}
+          {{ partial "buttons/freeEstimate.html" (dict "context" . "IsBlue" true "Site" .Site) }}
         </div>
       </div>
       
@@ -67,7 +67,7 @@
       </div>
 
       <div class="hidden md:block">
-        {{ partial "buttons/freeEstimate.html" (dict "context" . "IsBlue" true) }}
+        {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" true "Site" .Site ) }}
       </div>
       
       <div
