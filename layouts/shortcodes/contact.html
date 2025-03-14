@@ -2,5 +2,5 @@
 <div class="flex gap-4 flex-col p-4 md:p-0 md:flex-row w-full justify-center items-center">
   <h2 class="md:text-xl uppercase font-extralight">{{ $text }}</h2>
   <div class="w-[10%] h-0.5 bg-gray-100"></div>
-  {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" false ) }}
+  {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" false "Site" .Site ) }}
 </div>

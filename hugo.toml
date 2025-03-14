@@ -10,6 +10,137 @@ title = 'A.D.S. Wasing & Sealing'
   HeroButtonText = 'Free Estimate'
   HeroButtonLink = '/contact'
 
+  [[params.cities]]
+      name = 'Please Select a City'
+      value = 'Please Select a City'
+  [[params.cities]]
+      name = 'Ancaster'
+      value = 'Ancaster'
+  [[params.cities]]
+      name = 'Beamsville'
+      value = 'Beamsville'
+  [[params.cities]]
+      name = 'Binbrook'
+      value = 'Binbrook'
+  [[params.cities]]
+      name = 'Brantford'
+      value = 'Brantford'
+  [[params.cities]]
+      name = 'Burlington'
+      value = 'Burlington'
+  [[params.cities]]
+      name = 'Caledonia'
+      value = 'Caledonia'
+  [[params.cities]]
+      name = 'Dundas'
+      value = 'Dundas'
+  [[params.cities]]
+      name = 'Grimsby'
+      value = 'Grimsby'
+  [[params.cities]]
+      name = 'GTA'
+      value = 'GTA'
+  [[params.cities]]
+      name = 'Hamilton'
+      value = 'Hamilton'
+  [[params.cities]]
+      name = 'Hamilton Mountain'
+      value = 'Hamilton Mountain'
+  [[params.cities]]
+      name = 'Hannon'
+      value = 'Hannon'
+  [[params.cities]]
+      name = 'Mount Hope'
+      value = 'Mount Hope'
+  [[params.cities]]
+      name = 'Niagara'
+      value = 'Niagara'
+  [[params.cities]]
+      name = 'Oakville'
+      value = 'Oakville'
+  [[params.cities]]
+      name = 'Stoney Creek'
+      value = 'Stoney Creek'
+  [[params.cities]]
+      name = 'Stoney Creek Mountain'
+      value = 'Stoney Creek Mountain'
+  [[params.cities]]
+      name = 'Waterdown'
+      value = 'Waterdown'
+  [[params.cities]]
+      name = 'Winona'
+      value = 'Winona'
+  [[params.cities]]
+      name = 'Other'
+      value = 'Other'
+
+  [[params.surfaces]]
+      name = 'Please Select a Surface'
+      value = 'Please Select a Surface'
+  [[params.surfaces]]
+      name = 'Aggregate'
+      value = 'Aggregate'
+  [[params.surfaces]]
+      name = 'Aggregate/Asphalt'
+      value = 'Aggregate/Asphalt'
+  [[params.surfaces]]
+      name = 'Aggregate/Stamped'
+      value = 'Aggregate/Stamped'
+  [[params.surfaces]]
+      name = 'Asphalt'
+      value = 'Asphalt'
+  [[params.surfaces]]
+      name = 'Asphalt/Concrete'
+      value = 'Asphalt/Concrete'
+  [[params.surfaces]]
+      name = 'Coloured Concrete'
+      value = 'Coloured Concrete'
+  [[params.surfaces]]
+      name = 'Concrete'
+      value = 'Concrete'
+  [[params.surfaces]]
+      name = 'Concrete/Exposed'
+      value = 'Concrete/Exposed'
+  [[params.surfaces]]
+      name = 'Concrete/Interlock'
+      value = 'Concrete/Interlock'
+  [[params.surfaces]]
+      name = 'Concrete/Aggregate'
+      value = 'Concrete/Aggregate'
+  [[params.surfaces]]
+      name = 'Exposed'
+      value = 'Exposed'
+  [[params.surfaces]]
+      name = 'Exposed/Asphalt/Interlock'
+      value = 'Exposed/Asphalt/Interlock'
+  [[params.surfaces]]
+      name = 'Exposed/Flagstone'
+      value = 'Exposed/Flagstone'
+  [[params.surfaces]]
+      name = 'Flagstone'
+      value = 'Flagstone'
+  [[params.surfaces]]
+      name = 'Flagstone/Interlock'
+      value = 'Flagstone/Interlock'
+  [[params.surfaces]]
+      name = 'Interlock'
+      value = 'Interlock'
+  [[params.surfaces]]
+      name = 'Interlock/Aggregate'
+      value = 'Interlock/Aggregate'
+  [[params.surfaces]]
+      name = 'Pavers'
+      value = 'Pavers'
+  [[params.surfaces]]
+      name = 'Stamped'
+      value = 'Stamped'
+  [[params.surfaces]]
+      name = 'Stamped/Exposed'
+      value = 'Stamped/Exposed'
+  [[params.surfaces]]
+      name = 'Stamped/Stone'
+      value = 'Stamped/Stone'
+
   [[params.reviews]]
     name = 'Shawn Rafacz'
     review = 'These guys are great...top shelf! We had brick relifting, resanding & Sealing done for both interlocking & agrigate and we absolutely love the job BJ & the ADS team did highly recommended 👍'
