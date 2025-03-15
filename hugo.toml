@@ -9,6 +9,7 @@ title = 'A.D.S. Wasing & Sealing'
   HeroParagraph = 'A.D.S. offers applications for Concrete, Interlock, and Asphalt in the Greater Hamilton Area.'
   HeroButtonText = 'Free Estimate'
   HeroButtonLink = '/contact'
+  TotalReviews = 83
 
   [[params.cities]]
       name = 'Please Select a City'
