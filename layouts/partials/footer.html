@@ -39,7 +39,7 @@
         return this.selected === index
       },
     }"
-  class="flex flex-col gap-4 p-16">
+  class="flex flex-col gap-4 md:p-16">
   <h2 class="text-4xl text-center uppercase">Why Choose Us?</h2>
   <div class="flex min-h-[400px] flex-col md:flex-row ">
     <div class="flex flex-col justify-center items-center md:items-start w-full md:w-[40%] p-4 md:pl-16 gap-4 bg-[#F1F1F1]">
@@ -56,17 +56,17 @@
 
       {{ partial "buttons/freeEstimate.html" ( dict "context" . "IsBlue" false "Site" .Site ) }}
     </div>
-    <div class="flex flex-1 bg-[#0F63B0] px-[54px] py-[34px] ">
+    <div class="flex flex-1 bg-[#0F63B0] p-4 md:px-[54px] md:py-[34px] ">
       <div class="flex flex-col gap-4 text-white justify-center items-start">
         {{ range $index, $element := $whyChooseUs }}
           <div id="{{$index}}-paragraph"
-            class="flex flex-col gap-8 {{ if not (eq $index 0) }} hidden-content {{end}}"
+            class="flex flex-col text-justify md:text-start gap-8 {{ if not (eq $index 0) }} hidden-content {{end}}"
             :class="{
               'hidden-content': !isSelect({{$index}}),
               'slide-down': isSelect({{$index}})
             }"
           >
-            <h3 class="text-4xl select-none underline underline-offset-4 font-extralight">{{$element.text}}</h3>
+            <h3 class="text-4xl text-center select-none underline underline-offset-4 font-extralight">{{$element.text}}</h3>
             <p class="text-white">{{$element.description}}</p>
           </div>
         {{ end }}

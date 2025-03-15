@@ -5,7 +5,7 @@
     {{ partial "offer/services.html" . }}
 
     <!-- Customer Reviews -->
-    {{ partial "components/reviews.html" (dict "context" . "Reviews" .Site.Params.reviews) }}
+    {{ partial "components/reviews.html" (dict "context" . "Reviews" .Site.Params.reviews "TotalReviews" .Site.Params.TotalReviews) }}
     <!-- Customer Reviews END -->
 
     <!-- Clients -->

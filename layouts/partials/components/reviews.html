@@ -1,11 +1,32 @@
-<section class="flex flex-col gap-4 w-full p-4 h-[40dvh] relative">
+
+
+
+<section class="flex flex-col gap-4 w-full p-4 h-auto relative h-auto">
   <h2 class="text-4xl uppercase text-center font-extralight">What Customers Have To Say</h2>
+
+  <div class="reviews-badge-container text-center">
+    <div class="inline-flex items-center bg-gradient-to-r from-[#53AB2D] to-[#90C87C] px-6 py-2 rounded-full shadow-lg transform hover:scale-105 transition-transform duration-300">
+      <div class="mr-3">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-yellow-300">
+          <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <span class="text-white font-bold text-lg">OVER {{.TotalReviews}} FIVE-STAR GOOGLE REVIEWS!</span>
+      <div class="ml-3 hidden md:block">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-yellow-300">
+          <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+        </svg>
+      </div>
+    </div>
+    <p class="text-gray-700 mt-3 italic font-medium">The region's most trusted outdoor surface restoration experts</p>
+  </div>
+
   <!-- Review Card -->
-  <div class="flex flex-col gap-8 p-4 bg-gray-100 flex-1 justify-center items-center relative">
+  <div class="flex flex-col gap-8 p-4 bg-gray-100 flex-1 justify-center items-center relative h-auto">
     {{ with resources.Get "images/services/asphalt-repair.jpg" }}
       <img class="w-full h-full absolute top-0 left-0 z-0 object-cover select-none" src="{{ .RelPermalink }}" alt="Review Image Background" />
     {{ end }}
-    <div class="flex gap-8 z-10 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[95%] overflow-x-auto">
+    <div class="flex gap-8 z-10  w-[95%] overflow-x-auto">
       {{ range .Reviews }}
         <div class="bg-white rounded-lg shadow-lg p-6 min-w-72 w-full z-10">
           <!-- Header with Avatar and Name -->
@@ -55,7 +76,11 @@
         </div>
       {{ end }}
     </div>
-    <a href="https://www.google.com/maps/place/A.D.S.+Wash+and+Seal/@43.2001109,-79.7919072,17z/data=!4m8!3m7!1s0x882c98f7bed5d0e5:0x27a0075a6b681704!8m2!3d43.200107!4d-79.7893323!9m1!1b1!16s%2Fg%2F11cmd1bl50?entry=ttu&g_ep=EgoyMDI1MDMwOC4wIKXMDSoASAFQAw%3D%3D" class="ml-auto flex justify-center items-center gap-4 bg-black/40 text-4xl text-white font-medium p-4 z-10 absolute right-1.5 bottom-1.5" target="_blank">
+    <a
+      href="https://www.google.com/maps/place/A.D.S.+Wash+and+Seal/@43.2001109,-79.7919072,17z/data=!4m8!3m7!1s0x882c98f7bed5d0e5:0x27a0075a6b681704!8m2!3d43.200107!4d-79.7893323!9m1!1b1!16s%2Fg%2F11cmd1bl50?entry=ttu&g_ep=EgoyMDI1MDMwOC4wIKXMDSoASAFQAw%3D%3D"
+      class="ml-auto flex justify-center items-center gap-4 bg-black/40 md:text-4xl text-white font-medium p-4 z-10 absolute right-1.5 bottom-1.5"
+      target="_blank"
+    >
       More Reviews
       {{ partial "icons/arrow.html" . }}
     </a>
