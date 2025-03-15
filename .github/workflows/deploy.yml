@@ -34,22 +34,6 @@ jobs:
       - name: Build
         run: hugo --minify
 
-      - name: Backup existing deployment
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT || 22 }}
-          script: |
-            timestamp=$(date +%Y%m%d_%H%M%S)
-            mkdir -p /var/www/backups
-            if [ -d "/var/www/html" ]; then
-              cp -r /var/www/html /var/www/backups/backup_$timestamp
-              # Keep only last 5 backups
-              ls -dt /var/www/backups/backup_* | tail -n +6 | xargs rm -rf
-            fi
-
       - name: Deploy to temp directory
         uses: appleboy/scp-action@v0.1.4
         with:
