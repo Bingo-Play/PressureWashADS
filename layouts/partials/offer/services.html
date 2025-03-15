@@ -10,7 +10,7 @@
       {{ range $services }}
         <div
           @click="window.location.href='{{.link}}'"
-          class="relative group overflow-hidden transition-all group-hover:shadow-xl h-full">
+          class="relative group overflow-hidden transition-all group-hover:shadow-xl h-full cursor-pointer">
             {{ with resources.Get .image }}
               <img class="w-full h-full object-cover" src="{{ .RelPermalink }}" alt="Services">
             {{ end }}
